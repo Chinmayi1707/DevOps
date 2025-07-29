@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    form {
+      width: 350px;
+      margin: auto;
+      background-color:yellow;
+      padding: 20px;
+      /* padding-right: 10px; */
+      border-radius: 10px;
+      border-right: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+    }
+
+    .gender {
+      margin-top: 5px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 6px 12px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <form id="registrationForm" onsubmit="return validateForm()">
+    <h1>Registration Page</h1>
+    <label>First Name</label>
+    <input type="text" id="fname">
+
+    <label>Last Name</label>
+    <input type="text" id="lname">
+
+    <label>Date Of Birth</label>
+    <input type="date" id="dob">
+
+    <label>Email</label>
+    <input type="email" id="email">
+
+    <label>Gender</label>
+    <div class="gender">
+      <input type="radio" name="gender" value="Male" id="male">Male
+      <input type="radio" name="gender" value="Female" id="female">Female
+    </div>
+
+    <label>Phone No</label>
+    <input type="text" id="phone">
+
+    <label>Address</label>
+    <textarea id="address" rows="2"></textarea>
+
+    <input type="checkbox" id="terms"> Accept terms and conditions
+
+    <label>Branch</label>
+    <select id="branch">
+      <option value="CSE">CSE</option>
+      <option value="ECE">ECE</option>
+      <option value="EEE">EEE</option>
+      <option value="MECH">MECH</option>
+    </select>
+
+    <div class="buttons">
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </div>
+  </form>
+
+  <script>
+    function validateForm() {
+      let fname = document.getElementById("fname").value;
+      let lname = document.getElementById("lname").value;
+      let dob = document.getElementById("dob").value;
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+      let address = document.getElementById("address").value;
+      let terms = document.getElementById("terms").checked;
+      let genderMale = document.getElementById("male").checked;
+      let genderFemale = document.getElementById("female").checked;
+
+      if (fname === "" || lname === "" || dob === "" || email === "" || phone === "" || address === "") {
+        alert("Please fill out all fields.");
+        return false;
+      }
+
+      if (!genderMale && !genderFemale) {
+        alert("Please select your gender.");
+        return false;
+      }
+
+      if (!terms) {
+        alert("Please accept the terms and conditions.");
+        return false;
+      }
+
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit phone number.");
+        return false;
+      }
+
+      alert("Registration Successful!");
+      return true;
+    }
+  </script>
+
+</body>
+</html>
